@@ -1,3 +1,4 @@
+
 # 数据（体积大，不入库，用原始数据 + 脚本复现）
 data/raw/
 data/interim/
@@ -19,3 +20,6 @@ Thumbs.db
 *.pth
 *.onnx
 runs/
+
+.idea/
+.vscode/
