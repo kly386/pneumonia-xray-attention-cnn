@@ -1,0 +1,80 @@
+[
+  {
+    "variant": "none(基线)",
+    "ckpt": "resnet50_baseline.pt",
+    "val_f1": 0.9826,
+    "val_epochs": "A3 + B6(best)/10(早停)",
+    "test": {
+      "accuracy": 0.9743,
+      "f1_macro": 0.9675,
+      "auc": 0.9946,
+      "prec_macro": 0.9666,
+      "rec_macro": 0.9684,
+      "pn_rec": 0.9812
+    }
+  },
+  {
+    "variant": "SE",
+    "ckpt": "resnet50_se_v1.pt",
+    "body_k": "0",
+    "attn_k": "2372.4",
+    "val_f1": 0.968,
+    "val_epochs": "A3 + B3",
+    "test": {
+      "accuracy": 0.9708,
+      "f1_macro": 0.9637,
+      "auc": 0.9901,
+      "prec_macro": 0.9563,
+      "rec_macro": 0.972,
+      "pn_rec": 0.9694
+    }
+  },
+  {
+    "variant": "CBAM",
+    "ckpt": "resnet50_cbam_v1.pt",
+    "body_k": "0",
+    "attn_k": "2373.2",
+    "val_f1": 0.9721,
+    "val_epochs": "A3 + B7",
+    "test": {
+      "accuracy": 0.9743,
+      "f1_macro": 0.9678,
+      "auc": 0.9919,
+      "prec_macro": 0.9634,
+      "rec_macro": 0.9724,
+      "pn_rec": 0.9765
+    }
+  },
+  {
+    "variant": "CBAM v2(恒等初始化)",
+    "ckpt": "resnet50_cbam_v2.pt",
+    "body_k": "0",
+    "attn_k": "2373.2",
+    "val_f1": 0.9615,
+    "val_epochs": "A3 + B3",
+    "test": {
+      "accuracy": 0.9657,
+      "f1_macro": 0.9574,
+      "auc": 0.9901,
+      "prec_macro": 0.9493,
+      "rec_macro": 0.9665,
+      "pn_rec": 0.9647
+    }
+  },
+  {
+    "variant": "CBAM v3(恒等初始化+attn-lr=0.0001)",
+    "ckpt": "resnet50_cbam_v3.pt",
+    "body_k": "0",
+    "attn_k": "2373.2",
+    "val_f1": 0.963,
+    "val_epochs": "A3 + B3",
+    "test": {
+      "accuracy": 0.9708,
+      "f1_macro": 0.9635,
+      "auc": 0.9906,
+      "prec_macro": 0.9591,
+      "rec_macro": 0.9681,
+      "pn_rec": 0.9741
+    }
+  }
+]
