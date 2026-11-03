@@ -1,0 +1,92 @@
+{
+  "stage": "se-StageA",
+  "history": [
+    {
+      "stage": "se-StageA",
+      "epoch": 1,
+      "train": {
+        "accuracy": 0.8298,
+        "precision_macro": 0.7855,
+        "recall_macro": 0.7796,
+        "f1_macro": 0.7824,
+        "auc": 0.8902,
+        "ap": 0.956,
+        "best_threshold": 0.4841,
+        "best_f1_at_thr": 0.8859,
+        "loss": 0.5037
+      },
+      "val": {
+        "accuracy": 0.933,
+        "precision_macro": 0.9334,
+        "recall_macro": 0.8945,
+        "f1_macro": 0.9115,
+        "auc": 0.9697,
+        "ap": 0.9846,
+        "best_threshold": 0.5864,
+        "best_f1_at_thr": 0.9627,
+        "loss": 0.3504
+      },
+      "lr": [
+        0.001
+      ]
+    },
+    {
+      "stage": "se-StageA",
+      "epoch": 2,
+      "train": {
+        "accuracy": 0.9167,
+        "precision_macro": 0.8848,
+        "recall_macro": 0.9195,
+        "f1_macro": 0.8994,
+        "auc": 0.9667,
+        "ap": 0.9864,
+        "best_threshold": 0.332,
+        "best_f1_at_thr": 0.9485,
+        "loss": 0.3256
+      },
+      "val": {
+        "accuracy": 0.8746,
+        "precision_macro": 0.8402,
+        "recall_macro": 0.908,
+        "f1_macro": 0.858,
+        "auc": 0.9861,
+        "ap": 0.9944,
+        "best_threshold": 0.1232,
+        "best_f1_at_thr": 0.9764,
+        "loss": 0.4082
+      },
+      "lr": [
+        0.0007525
+      ]
+    },
+    {
+      "stage": "se-StageA",
+      "epoch": 3,
+      "train": {
+        "accuracy": 0.9279,
+        "precision_macro": 0.9002,
+        "recall_macro": 0.9259,
+        "f1_macro": 0.9117,
+        "auc": 0.9734,
+        "ap": 0.9882,
+        "best_threshold": 0.3638,
+        "best_f1_at_thr": 0.9551,
+        "loss": 0.3064
+      },
+      "val": {
+        "accuracy": 0.9107,
+        "precision_macro": 0.876,
+        "recall_macro": 0.9347,
+        "f1_macro": 0.8961,
+        "auc": 0.9892,
+        "ap": 0.996,
+        "best_threshold": 0.1074,
+        "best_f1_at_thr": 0.9777,
+        "loss": 0.3526
+      },
+      "lr": [
+        0.00025750000000000013
+      ]
+    }
+  ]
+}

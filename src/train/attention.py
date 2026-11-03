@@ -44,7 +44,7 @@ class SEBlock(nn.Module):
 class ChannelGate(nn.Module):
     """CBAM 通道门：avg-pool 与 max-pool 共享同一个 MLP，两者结果相加后过 Sigmoid。"""
 
-    def __init__(self, channels: int, reduction: int = 16):
+    def __init__(self, channels: int, reduction: int = 16, identity_init: bool = False):
         super().__init__()
         mid = max(channels // reduction, 1)
         self.mlp = nn.Sequential(
@@ -52,6 +52,10 @@ class ChannelGate(nn.Module):
             nn.ReLU(inplace=True),
             nn.Conv2d(mid, channels, 1),
         )
+        if identity_init:
+            # 同 SpatialGate：末层清零 + bias=+4，通道门初始恒为 sigmoid(4)≈0.98（≈全通）
+            nn.init.zeros_(self.mlp[2].weight)
+            nn.init.constant_(self.mlp[2].bias, 4.0)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         avg = self.mlp(x.mean(dim=(2, 3), keepdim=True))
@@ -62,9 +66,15 @@ class ChannelGate(nn.Module):
 class SpatialGate(nn.Module):
     """CBAM 空间门：沿通道取 avg/max 拼接 -> 7x7 卷积 -> Sigmoid。"""
 
-    def __init__(self, kernel_size: int = 7):
+    def __init__(self, kernel_size: int = 7, identity_init: bool = False):
         super().__init__()
         self.conv = nn.Conv2d(2, 1, kernel_size, padding=kernel_size // 2)
+        if identity_init:
+            # 恒等初始化（E2 第二轮，v1 塌方诊断的修复）：
+            # 权重清零 + bias=+4  => 门控初始输出恒为 sigmoid(4)≈0.98，
+            # 等于"初始≈全通"，不会像随机初始化那样在预训练特征图上打噪声窗。
+            nn.init.zeros_(self.conv.weight)
+            nn.init.constant_(self.conv.bias, 4.0)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         avg = x.mean(dim=1, keepdim=True)
@@ -76,10 +86,11 @@ class SpatialGate(nn.Module):
 class CBAMBlock(nn.Module):
     """通道门 + 空间门 串联。"""
 
-    def __init__(self, channels: int, reduction: int = 16, kernel_size: int = 7):
+    def __init__(self, channels: int, reduction: int = 16, kernel_size: int = 7,
+                 identity_init: bool = False):
         super().__init__()
-        self.channel_gate = ChannelGate(channels, reduction)
-        self.spatial_gate = SpatialGate(kernel_size)
+        self.channel_gate = ChannelGate(channels, reduction, identity_init)
+        self.spatial_gate = SpatialGate(kernel_size, identity_init)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = x * self.channel_gate(x)
@@ -102,12 +113,17 @@ class BottleneckWithAttention(nn.Module):
         return self.attn(self.block(x))
 
 
-def attach_attention_to_stage(stage: nn.Sequential, attn_type: str) -> None:
+def attach_attention_to_stage(stage: nn.Sequential, attn_type: str,
+                              identity_init: bool = False) -> None:
     """把 stage（如 net.layer3）里每个 Bottleneck 都包上注意力。原地修改。"""
     attn_cls = ATTN_MODULES[attn_type]
     for i, block in enumerate(stage):
         channels = block.conv3.out_channels        # bottleneck 输出通道（在 conv3 上）
-        stage[i] = BottleneckWithAttention(block, attn_cls(channels))
+        if attn_cls is CBAMBlock:
+            attn = attn_cls(channels, identity_init=identity_init)
+        else:
+            attn = attn_cls(channels)
+        stage[i] = BottleneckWithAttention(block, attn)
 
 
 def build_resnet50_attn(
@@ -115,6 +131,7 @@ def build_resnet50_attn(
     dropout: float = 0.3,
     attn_type: str = "none",
     positions: tuple[str, ...] = ("layer3", "layer4"),
+    identity_init: bool = False,
 ) -> models.ResNet:
     """构建带注意力的 ResNet50 迁移学习模型（与 model.py::build_resnet50 同约定）。
 
@@ -122,12 +139,14 @@ def build_resnet50_attn(
         freeze: True 冻结骨干卷积（阶段 A）；注意力与分类头始终可训练。
         attn_type: "none" / "se" / "cbam"。
         positions: 插入注意力的 stage 名，可含 layer1~layer4。
+        identity_init: CBAM 专用——门控恒等初始化（v2）；False = 朴素随机初始化（v1）。
     """
     net = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V2)
 
     if attn_type != "none":
         for pos in positions:
-            attach_attention_to_stage(getattr(net, pos), attn_type)
+            attach_attention_to_stage(getattr(net, pos), attn_type,
+                                      identity_init=identity_init)
 
     in_features = net.fc.in_features
     net.fc = nn.Sequential(
