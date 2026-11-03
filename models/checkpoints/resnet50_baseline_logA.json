@@ -1,0 +1,92 @@
+{
+  "stage": "StageA-headOnly",
+  "history": [
+    {
+      "stage": "StageA-headOnly",
+      "epoch": 1,
+      "train": {
+        "accuracy": 0.841,
+        "precision_macro": 0.8022,
+        "recall_macro": 0.8573,
+        "f1_macro": 0.8178,
+        "auc": 0.93,
+        "ap": 0.9731,
+        "best_threshold": 0.3879,
+        "best_f1_at_thr": 0.912,
+        "loss": 0.4374
+      },
+      "val": {
+        "accuracy": 0.8333,
+        "precision_macro": 0.8088,
+        "recall_macro": 0.8836,
+        "f1_macro": 0.8176,
+        "auc": 0.9764,
+        "ap": 0.9912,
+        "best_threshold": 0.182,
+        "best_f1_at_thr": 0.9528,
+        "loss": 0.4541
+      },
+      "lr": [
+        0.001
+      ]
+    },
+    {
+      "stage": "StageA-headOnly",
+      "epoch": 2,
+      "train": {
+        "accuracy": 0.8811,
+        "precision_macro": 0.8432,
+        "recall_macro": 0.8938,
+        "f1_macro": 0.8608,
+        "auc": 0.9607,
+        "ap": 0.9843,
+        "best_threshold": 0.3079,
+        "best_f1_at_thr": 0.9402,
+        "loss": 0.3605
+      },
+      "val": {
+        "accuracy": 0.8883,
+        "precision_macro": 0.8534,
+        "recall_macro": 0.9194,
+        "f1_macro": 0.8725,
+        "auc": 0.9798,
+        "ap": 0.9923,
+        "best_threshold": 0.2696,
+        "best_f1_at_thr": 0.9554,
+        "loss": 0.3966
+      },
+      "lr": [
+        0.0007525
+      ]
+    },
+    {
+      "stage": "StageA-headOnly",
+      "epoch": 3,
+      "train": {
+        "accuracy": 0.8852,
+        "precision_macro": 0.8477,
+        "recall_macro": 0.8996,
+        "f1_macro": 0.8657,
+        "auc": 0.9648,
+        "ap": 0.9866,
+        "best_threshold": 0.2788,
+        "best_f1_at_thr": 0.9433,
+        "loss": 0.3488
+      },
+      "val": {
+        "accuracy": 0.8866,
+        "precision_macro": 0.8518,
+        "recall_macro": 0.9182,
+        "f1_macro": 0.8707,
+        "auc": 0.9802,
+        "ap": 0.9926,
+        "best_threshold": 0.1907,
+        "best_f1_at_thr": 0.9552,
+        "loss": 0.3939
+      },
+      "lr": [
+        0.00025750000000000013
+      ]
+    }
+  ]
+}
