@@ -1,0 +1,144 @@
+[
+  {
+    "run": "resnet18_baseline",
+    "ckpt": "resnet18_baseline.pt",
+    "stage_a_val_f1": 0.8850976921505889,
+    "val_f1": 0.8905637284230032,
+    "best_epoch": 6,
+    "threshold": 0.22404780983924866,
+    "test": {
+      "accuracy": 0.8868,
+      "precision_macro": 0.8514,
+      "recall_macro": 0.9164,
+      "f1_macro": 0.8705,
+      "auc": 0.9751,
+      "ap": 0.9862,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.711,
+          "recall": 0.981,
+          "f1": 0.8245
+        },
+        "PNEUMONIA": {
+          "precision": 0.9918,
+          "recall": 0.8518,
+          "f1": 0.9165
+        }
+      },
+      "best_threshold": 0.134,
+      "best_f1_at_thr": 0.9582
+    }
+  },
+  {
+    "run": "resnet34_baseline",
+    "ckpt": "resnet34_baseline.pt",
+    "stage_a_val_f1": 0.8530927835051547,
+    "val_f1": 0.8862482212354483,
+    "best_epoch": 5,
+    "threshold": 0.28738459944725037,
+    "test": {
+      "accuracy": 0.8645,
+      "precision_macro": 0.8283,
+      "recall_macro": 0.8912,
+      "f1_macro": 0.8456,
+      "auc": 0.968,
+      "ap": 0.9844,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.6787,
+          "recall": 0.9494,
+          "f1": 0.7916
+        },
+        "PNEUMONIA": {
+          "precision": 0.9779,
+          "recall": 0.8329,
+          "f1": 0.8996
+        }
+      },
+      "best_threshold": 0.1805,
+      "best_f1_at_thr": 0.9509
+    }
+  },
+  {
+    "run": "densenet121_baseline",
+    "ckpt": "densenet121_baseline.pt",
+    "stage_a_val_f1": 0.9025737602008789,
+    "val_f1": 0.8954394693200662,
+    "best_epoch": 3,
+    "threshold": 0.23013567924499512,
+    "test": {
+      "accuracy": 0.8645,
+      "precision_macro": 0.8278,
+      "recall_macro": 0.8892,
+      "f1_macro": 0.8452,
+      "auc": 0.9624,
+      "ap": 0.9844,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.6804,
+          "recall": 0.943,
+          "f1": 0.7905
+        },
+        "PNEUMONIA": {
+          "precision": 0.9753,
+          "recall": 0.8353,
+          "f1": 0.8999
+        }
+      },
+      "best_threshold": 0.2679,
+      "best_f1_at_thr": 0.9419
+    }
+  },
+  {
+    "run": "efficientnet_b0_baseline",
+    "ckpt": "efficientnet_b0_baseline.pt",
+    "stage_a_val_f1": 0.8562099358974359,
+    "val_f1": 0.8579647837177349,
+    "best_epoch": 4,
+    "threshold": 0.06404373049736023,
+    "test": {
+      "accuracy": 0.8456,
+      "precision_macro": 0.8167,
+      "recall_macro": 0.8901,
+      "f1_macro": 0.8292,
+      "auc": 0.9766,
+      "ap": 0.9902,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.6393,
+          "recall": 0.9873,
+          "f1": 0.7761
+        },
+        "PNEUMONIA": {
+          "precision": 0.9941,
+          "recall": 0.7929,
+          "f1": 0.8822
+        }
+      },
+      "best_threshold": 0.1294,
+      "best_f1_at_thr": 0.9575
+    }
+  },
+  {
+    "run": "resnet50_baseline(保底基线, 闵娟)",
+    "ckpt": "resnet50_baseline.pt",
+    "stage_a_val_f1": 0.8725,
+    "val_f1": 0.9826,
+    "best_epoch": 6,
+    "threshold": 0.5101,
+    "test": {
+      "accuracy": 0.9743,
+      "f1_macro": 0.9675,
+      "auc": 0.9946,
+      "per_class": {
+        "NORMAL": {
+          "recall": 0.9557
+        },
+        "PNEUMONIA": {
+          "recall": 0.9812
+        }
+      }
+    },
+    "source": "reports/model_baseline.md（同协议，本机行只换骨干与其对比）"
+  }
+]

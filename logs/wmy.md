@@ -4,7 +4,7 @@
 - **项目名称：** 基于注意力机制增强 CNN 的肺炎 X 光片智能辅助诊断系统
 - **身份：** 成员3 / 算法-模型（副）/ 可解释性 / 部署导出
 - **工作地点：** `D:\pneumonia-xray-attention-cnn\`
-- **今日状态：** ✅ **E7 全量定稿**（ONNX 三件 + 时延 + val 精度无退化验证，报告 `reports/e7_onnx.md`）；Grad-CAM 首批真图产出；数据接入并复现划分成功
+- **今日状态：** ✅ **份内四件套全部收官** —— E7 部署三件（定稿）+ Grad-CAM 首批热力图 + **E1 骨干对比** + **E3 增强消融**（均为单变量协议，test 一次终评，报告已产出）
 
 ---
 
@@ -20,6 +20,8 @@
 | 6 | **数据接入 + 划分复现** | ✅ 完成 | 原始数据（组长群文件）拷入 `data/raw/chest_xray/`，跑 `make_split.py`：本地复现的 `split_manifest.csv` 与仓库入库版**逐行内容完全一致**（5824 张，train 4659 / val 582 / test 583），复现成功 |
 | 7 | **E7 收尾：val 精度无退化验证** | ✅ 完成 | fp32 / 动态 int8 与 torch 精度完全一致；静态 int8 仅 -0.17pp（P-Recall 不变），详见第三节与 `reports/e7_onnx.md` |
 | 8 | **Grad-CAM 首批真图** | ✅ 完成 | val 一负一正两张（NORMAL / PNEUMONIA 各一），判定正确、热区聚焦合理（`reports/figures/gradcam/`）；正式成批出图待与报告排版对齐 |
+| 9 | **E1 骨干对比（4 个新骨干）** | ✅ 完成 | 新建 `src/train/exp_utils.py`（通用骨干/头替换/两阶段）+ `src/train/train_e1.py`；resnet18/34、densenet121、efficientnet_b0 同协议各训一轮，**ResNet50 全面最优**（test F1 0.9675 vs 0.8292~0.8705），报告 `reports/e1_backbone.md` |
+| 10 | **E3 增强消融（5 个变体）** | ✅ 完成 | 新建 `src/train/train_e3.py`（自定义 train transform 单变量）；none/geo/color/strong/flip 五变体，**全量增强组合不可替代**（test F1 0.9675 vs 0.8153~0.9020），报告 `reports/e3_augment.md` |
 
 ## 二、Git 与分支约定（自用备忘）
 
@@ -54,6 +56,7 @@
 |---|---|---|
 | P0 | 把 `models/onnx/resnet50_baseline.onnx`（+两件 int8）交给杨思彤联调；约定见 `reports/e7_onnx.md` 第 2 节 | 无，随时可交 |
 | P0 | Grad-CAM 正式成批出图（按 test/val 选取代表性样张：NORMAL/PNEUMONIA/难例 若干），并入总结报告"可解释性"章节 | 无；等报告排版需求确定张数 |
-| P1 | E1 骨干对比（复用 `train_baseline.py` 骨架换骨干名，`model.py` 加骨干开关） | 无（数据已就绪）；GPU 6G 跑 ResNet 系 OK |
-| P1 | E3 增强消融（单变量：关闭/替换各项 train 增强逐项对比） | 无 |
-| ~~P0~~ | ~~E7 精度验证~~ ✅ 已完成（本日志第三/四节） | — |
+| P2（可选） | E1/E3 稳健性复跑（对差距小的对子做双 seed） | 时间允许时 |
+| ~~P0~~ | ~~E7~~ / ~~E1 骨干对比~~ / ~~E3 增强消融~~ ✅ 全部完成 | — |
+
+**份内份外交接提示**：我的三份报告（`e7_onnx.md` / `e1_backbone.md` / `e3_augment.md`）可直接并入总结报告对应章节（部署 / 模型选型依据 / 增强消融）。

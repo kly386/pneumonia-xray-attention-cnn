@@ -1,0 +1,174 @@
+[
+  {
+    "run": "baseline(全量增强)",
+    "ckpt": "resnet50_baseline.pt",
+    "stage_a_val_f1": 0.8725,
+    "val_f1": 0.9826,
+    "best_epoch": 6,
+    "threshold": 0.5101,
+    "test": {
+      "accuracy": 0.9743,
+      "f1_macro": 0.9675,
+      "auc": 0.9946,
+      "per_class": {
+        "NORMAL": {
+          "recall": 0.9557
+        },
+        "PNEUMONIA": {
+          "recall": 0.9812
+        }
+      }
+    },
+    "source": "reports/model_baseline.md (闵娟, 同协议)"
+  },
+  {
+    "run": "resnet50_aug_none",
+    "ckpt": "resnet50_aug_none.pt",
+    "stage_a_val_f1": 0.9003852830940013,
+    "val_f1": 0.924953794575698,
+    "best_epoch": 12,
+    "threshold": 0.35345378518104553,
+    "test": {
+      "accuracy": 0.9177,
+      "precision_macro": 0.8846,
+      "recall_macro": 0.9276,
+      "f1_macro": 0.9017,
+      "auc": 0.9775,
+      "ap": 0.9898,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.7895,
+          "recall": 0.9494,
+          "f1": 0.8621
+        },
+        "PNEUMONIA": {
+          "precision": 0.9796,
+          "recall": 0.9059,
+          "f1": 0.9413
+        }
+      },
+      "best_threshold": 0.3106,
+      "best_f1_at_thr": 0.9645
+    }
+  },
+  {
+    "run": "resnet50_aug_geo",
+    "ckpt": "resnet50_aug_geo.pt",
+    "stage_a_val_f1": 0.8685738745327756,
+    "val_f1": 0.884763491369893,
+    "best_epoch": 3,
+    "threshold": 0.20893089473247528,
+    "test": {
+      "accuracy": 0.8491,
+      "precision_macro": 0.8177,
+      "recall_macro": 0.8885,
+      "f1_macro": 0.8317,
+      "auc": 0.9653,
+      "ap": 0.9857,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.6471,
+          "recall": 0.9747,
+          "f1": 0.7778
+        },
+        "PNEUMONIA": {
+          "precision": 0.9884,
+          "recall": 0.8024,
+          "f1": 0.8857
+        }
+      },
+      "best_threshold": 0.3674,
+      "best_f1_at_thr": 0.9405
+    }
+  },
+  {
+    "run": "resnet50_aug_color",
+    "ckpt": "resnet50_aug_color.pt",
+    "stage_a_val_f1": 0.8947880743130493,
+    "val_f1": 0.91747022121384,
+    "best_epoch": 12,
+    "threshold": 0.250534325838089,
+    "test": {
+      "accuracy": 0.916,
+      "precision_macro": 0.8818,
+      "recall_macro": 0.9324,
+      "f1_macro": 0.9008,
+      "auc": 0.9774,
+      "ap": 0.9897,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.7766,
+          "recall": 0.9684,
+          "f1": 0.862
+        },
+        "PNEUMONIA": {
+          "precision": 0.987,
+          "recall": 0.8965,
+          "f1": 0.9396
+        }
+      },
+      "best_threshold": 0.2657,
+      "best_f1_at_thr": 0.9673
+    }
+  },
+  {
+    "run": "resnet50_aug_strong",
+    "ckpt": "resnet50_aug_strong.pt",
+    "stage_a_val_f1": 0.8071452699985523,
+    "val_f1": 0.8324083769633508,
+    "best_epoch": 6,
+    "threshold": 0.22853131592273712,
+    "test": {
+      "accuracy": 0.8319,
+      "precision_macro": 0.8055,
+      "recall_macro": 0.8787,
+      "f1_macro": 0.8153,
+      "auc": 0.9562,
+      "ap": 0.983,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.62,
+          "recall": 0.981,
+          "f1": 0.7598
+        },
+        "PNEUMONIA": {
+          "precision": 0.991,
+          "recall": 0.7765,
+          "f1": 0.8707
+        }
+      },
+      "best_threshold": 0.2692,
+      "best_f1_at_thr": 0.9336
+    }
+  },
+  {
+    "run": "resnet50_aug_flip",
+    "ckpt": "resnet50_aug_flip.pt",
+    "stage_a_val_f1": 0.9114296331687636,
+    "val_f1": 0.9191214461076884,
+    "best_epoch": 5,
+    "threshold": 0.36912184953689575,
+    "test": {
+      "accuracy": 0.9177,
+      "precision_macro": 0.8843,
+      "recall_macro": 0.9296,
+      "f1_macro": 0.902,
+      "auc": 0.9779,
+      "ap": 0.9902,
+      "per_class": {
+        "NORMAL": {
+          "precision": 0.7865,
+          "recall": 0.9557,
+          "f1": 0.8629
+        },
+        "PNEUMONIA": {
+          "precision": 0.9821,
+          "recall": 0.9035,
+          "f1": 0.9412
+        }
+      },
+      "best_threshold": 0.2468,
+      "best_f1_at_thr": 0.9665
+    }
+  }
+]
