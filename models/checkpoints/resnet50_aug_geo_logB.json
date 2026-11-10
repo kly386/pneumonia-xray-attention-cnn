@@ -1,0 +1,187 @@
+{
+  "stage": "StageB-finetune",
+  "history": [
+    {
+      "stage": "StageB-finetune",
+      "epoch": 1,
+      "train": {
+        "accuracy": 0.8892,
+        "precision_macro": 0.8522,
+        "recall_macro": 0.9049,
+        "f1_macro": 0.8705,
+        "auc": 0.9646,
+        "ap": 0.9858,
+        "best_threshold": 0.2893,
+        "best_f1_at_thr": 0.9425,
+        "loss": 0.3493
+      },
+      "val": {
+        "accuracy": 0.8866,
+        "precision_macro": 0.8514,
+        "recall_macro": 0.9162,
+        "f1_macro": 0.8704,
+        "auc": 0.9808,
+        "ap": 0.9927,
+        "best_threshold": 0.161,
+        "best_f1_at_thr": 0.9567,
+        "loss": 0.3901
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 2,
+      "train": {
+        "accuracy": 0.8916,
+        "precision_macro": 0.8548,
+        "recall_macro": 0.9068,
+        "f1_macro": 0.8731,
+        "auc": 0.9671,
+        "ap": 0.987,
+        "best_threshold": 0.3223,
+        "best_f1_at_thr": 0.9408,
+        "loss": 0.3443
+      },
+      "val": {
+        "accuracy": 0.8935,
+        "precision_macro": 0.8581,
+        "recall_macro": 0.9209,
+        "f1_macro": 0.8775,
+        "auc": 0.9816,
+        "ap": 0.9931,
+        "best_threshold": 0.2056,
+        "best_f1_at_thr": 0.9584,
+        "loss": 0.384
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 3,
+      "train": {
+        "accuracy": 0.8854,
+        "precision_macro": 0.848,
+        "recall_macro": 0.9007,
+        "f1_macro": 0.8662,
+        "auc": 0.9687,
+        "ap": 0.9876,
+        "best_threshold": 0.3308,
+        "best_f1_at_thr": 0.9471,
+        "loss": 0.3413
+      },
+      "val": {
+        "accuracy": 0.9003,
+        "precision_macro": 0.865,
+        "recall_macro": 0.9256,
+        "f1_macro": 0.8848,
+        "auc": 0.9824,
+        "ap": 0.9934,
+        "best_threshold": 0.2089,
+        "best_f1_at_thr": 0.9573,
+        "loss": 0.381
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 4,
+      "train": {
+        "accuracy": 0.8944,
+        "precision_macro": 0.8578,
+        "recall_macro": 0.9082,
+        "f1_macro": 0.8759,
+        "auc": 0.9666,
+        "ap": 0.9867,
+        "best_threshold": 0.292,
+        "best_f1_at_thr": 0.9429,
+        "loss": 0.3448
+      },
+      "val": {
+        "accuracy": 0.8797,
+        "precision_macro": 0.8449,
+        "recall_macro": 0.9115,
+        "f1_macro": 0.8633,
+        "auc": 0.9824,
+        "ap": 0.9935,
+        "best_threshold": 0.1859,
+        "best_f1_at_thr": 0.9596,
+        "loss": 0.401
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 5,
+      "train": {
+        "accuracy": 0.8925,
+        "precision_macro": 0.8557,
+        "recall_macro": 0.9073,
+        "f1_macro": 0.874,
+        "auc": 0.9681,
+        "ap": 0.9872,
+        "best_threshold": 0.3013,
+        "best_f1_at_thr": 0.9481,
+        "loss": 0.3405
+      },
+      "val": {
+        "accuracy": 0.8935,
+        "precision_macro": 0.8581,
+        "recall_macro": 0.9209,
+        "f1_macro": 0.8775,
+        "auc": 0.9827,
+        "ap": 0.9934,
+        "best_threshold": 0.1925,
+        "best_f1_at_thr": 0.9597,
+        "loss": 0.3837
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 6,
+      "train": {
+        "accuracy": 0.8961,
+        "precision_macro": 0.8598,
+        "recall_macro": 0.9138,
+        "f1_macro": 0.8786,
+        "auc": 0.9723,
+        "ap": 0.9895,
+        "best_threshold": 0.3274,
+        "best_f1_at_thr": 0.9484,
+        "loss": 0.3328
+      },
+      "val": {
+        "accuracy": 0.8986,
+        "precision_macro": 0.8633,
+        "recall_macro": 0.9245,
+        "f1_macro": 0.8829,
+        "auc": 0.983,
+        "ap": 0.9936,
+        "best_threshold": 0.2026,
+        "best_f1_at_thr": 0.9597,
+        "loss": 0.3763
+      }
+    },
+    {
+      "stage": "StageB-finetune",
+      "epoch": 7,
+      "train": {
+        "accuracy": 0.8948,
+        "precision_macro": 0.8583,
+        "recall_macro": 0.907,
+        "f1_macro": 0.8761,
+        "auc": 0.9671,
+        "ap": 0.9869,
+        "best_threshold": 0.3079,
+        "best_f1_at_thr": 0.9451,
+        "loss": 0.3414
+      },
+      "val": {
+        "accuracy": 0.8918,
+        "precision_macro": 0.8564,
+        "recall_macro": 0.9198,
+        "f1_macro": 0.8757,
+        "auc": 0.9831,
+        "ap": 0.9937,
+        "best_threshold": 0.1809,
+        "best_f1_at_thr": 0.9597,
+        "loss": 0.387
+      }
+    }
+  ]
+}
