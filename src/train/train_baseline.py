@@ -78,7 +78,7 @@ def run_epoch(model, loader, criterion, optimizer=None, scaler=None, desc=""):
 
 
 def train_stage(model, train_loader, val_loader, name, epochs, lr_body, lr_head,
-                patience, freeze, log_path):
+                patience, freeze, log_path, lr_attn=None):
     """训练一个阶段，返回 (best_checkpoint 状态字典, 最佳 val F1, 历史列表)。"""
     criterion = common.make_loss()
 
@@ -88,7 +88,8 @@ def train_stage(model, train_loader, val_loader, name, epochs, lr_body, lr_head,
             lr=lr_head, weight_decay=1e-4,
         )
     else:
-        groups, wd = param_groups(model, lr_head=lr_head, base_lr=lr_body, weight_decay=1e-4)
+        groups, wd = param_groups(model, lr_head=lr_head, base_lr=lr_body,
+                                  weight_decay=1e-4, lr_attn=lr_attn)
         optimizer = AdamW(groups, lr=lr_head, weight_decay=wd)  # 组内会覆盖顶层 lr
 
     scheduler = CosineAnnealingLR(optimizer, T_max=epochs, eta_min=lr_head * 0.01)

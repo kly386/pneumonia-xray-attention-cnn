@@ -49,15 +49,36 @@ def build_resnet50(freeze: bool, dropout: float = 0.3) -> models.ResNet:
     return net
 
 
-def param_groups(net: nn.Module, lr_head: float, base_lr: float, weight_decay: float):
-    """返回 optimizer 参数组：分类头用大学习率，骨干用小学习率（阶段 B 微调）。"""
+def param_groups(net: nn.Module, lr_head: float, base_lr: float, weight_decay: float,
+                 lr_attn: float | None = None):
+    """返回 optimizer 参数组：分类头大学习率，骨干小学习率，注意力可单列更低学习率。
+
+    注意力模块（SE/CBAM）是从零训练的新组件，对学习率比预训练骨干更敏感——
+    E2 诊断：与骨干共用 3e-4 会震荡、收敛不稳。故可传入 lr_attn 将其单列一组。
+    默认 None = 不拆分，注意力并入骨干组（保底基线行为完全不变，注意力不存在的
+    普通 ResNet50 也走同一分支）。
+    """
     head_params = [p for p in net.fc.parameters() if p.requires_grad]
-    body_params = [p for i, (name, p) in enumerate(net.named_parameters())
-                   if p.requires_grad and not name.startswith("fc.")]
-    return [
-        {"params": body_params, "lr": base_lr},
-        {"params": head_params, "lr": lr_head},
-    ], weight_decay
+    body_params: list[nn.Parameter] = []
+    attn_params: list[nn.Parameter] = []
+    # 注意力参数名的特征（与 attention.py::count_params_by_group 保持一致）
+    attn_keys = ("channel_gate", "spatial_gate", "attn.")
+    for name, p in net.named_parameters():
+        if not p.requires_grad or name.startswith("fc."):
+            continue
+        if any(k in name for k in attn_keys):
+            attn_params.append(p)
+        else:
+            body_params.append(p)
+
+    groups: list[dict] = [{"params": body_params, "lr": base_lr}]
+    if attn_params:
+        groups.append({
+            "params": attn_params,
+            "lr": lr_attn if lr_attn is not None else base_lr,
+        })
+    groups.append({"params": head_params, "lr": lr_head})
+    return groups, weight_decay
 
 
 if __name__ == "__main__":
