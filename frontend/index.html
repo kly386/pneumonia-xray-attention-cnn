@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F4F8FC">
+    <meta
+      name="description"
+      content="基于 ResNet50 与 ONNX Runtime 的肺炎 X 光片智能辅助筛查系统"
+    >
+    <script>
+      ;(() => {
+        try {
+          const saved = localStorage.getItem('pneumonia_theme')
+          const theme = saved === 'dark' ? 'dark' : 'light'
+          document.documentElement.classList.toggle('dark', theme === 'dark')
+          document.documentElement.dataset.theme = theme
+        } catch {
+          document.documentElement.dataset.theme = 'light'
+        }
+      })()
+    </script>
+    <title>肺炎 X 光片智能辅助诊断系统</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="75%">
+      <stop offset="0%" stop-color="#0b2a44"/>
+      <stop offset="100%" stop-color="#04101f"/>
+    </radialGradient>
+    <linearGradient id="bone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <g stroke="#155e75" stroke-width="1" opacity="0.32">
+    <path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640"/>
+    <path d="M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/>
+  </g>
+  <path d="M320 42v250" stroke="url(#bone)" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <g stroke="url(#bone)" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M320 74c-56 0-92 20-112 56M320 74c56 0 92 20 112 56"/>
+    <path d="M320 118c-64 0-104 22-126 62M320 118c64 0 104 22 126 62"/>
+    <path d="M320 162c-70 0-112 24-134 66M320 162c70 0 112 24 134 66"/>
+    <path d="M320 206c-72 0-114 24-136 66M320 206c72 0 114 24 136 66"/>
+    <path d="M320 250c-68 0-108 22-128 60M320 250c68 0 108 22 128 60"/>
+  </g>
+  <ellipse cx="320" cy="62" rx="22" ry="14" fill="#fbbf24" opacity="0.8"/>
+  <text x="42" y="326" fill="#fbbf24" font-family="monospace" font-size="16" letter-spacing="2">THORAX · RIB CAGE</text>
+  <text x="500" y="54" fill="#94a3b8" font-family="monospace" font-size="13">C · 胸廓</text>
+</svg>

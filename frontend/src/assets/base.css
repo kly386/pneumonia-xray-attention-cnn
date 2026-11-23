@@ -1,0 +1,164 @@
+/* 全局主题变量：默认浅色临床模式，html.dark 切换为深色医疗科技模式 */
+:root {
+  color-scheme: light;
+
+  --color-bg: #f4f8fc;
+  --color-bg-deep: #e8f1f8;
+  --color-bg-elevated: #ffffff;
+  --color-primary: #06b6d4;
+  --color-primary-strong: #0891b2;
+  --color-secondary: #2563eb;
+  --color-success: #16a34a;
+  --color-danger: #dc2626;
+  --color-warning: #d97706;
+
+  --color-text: #0f2742;
+  --color-text-soft: #334155;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
+
+  --glass-bg: rgba(255, 255, 255, 0.76);
+  --glass-bg-strong: rgba(255, 255, 255, 0.94);
+  --glass-bg-soft: rgba(241, 245, 249, 0.78);
+  --glass-border: rgba(15, 39, 66, 0.12);
+  --glass-border-hover: rgba(6, 182, 212, 0.36);
+  --glass-blur: blur(16px);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 20px 50px rgba(30, 64, 175, 0.1);
+  --shadow-soft: 0 10px 30px rgba(30, 64, 175, 0.08);
+  --shadow-glow: 0 0 28px rgba(6, 182, 212, 0.16);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --font-sans:
+    'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC',
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms ease;
+  --page-transition-duration: 280ms;
+
+  --page-background:
+    radial-gradient(circle at 16% 12%, rgba(6, 182, 212, 0.08), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(37, 99, 235, 0.06), transparent 34%),
+    linear-gradient(145deg, #f8fbff 0%, #f4f8fc 52%, #eaf3fa 100%);
+  --grid-line: rgba(15, 39, 66, 0.035);
+  --topbar-bg: rgba(255, 255, 255, 0.74);
+  --surface-hover: rgba(15, 39, 66, 0.045);
+  --surface-subtle: rgba(15, 39, 66, 0.035);
+  --aurora-opacity: 0.08;
+  --scrollbar-track: rgba(226, 232, 240, 0.72);
+  --scrollbar-thumb: rgba(100, 116, 139, 0.42);
+  --scrollbar-thumb-hover: rgba(8, 145, 178, 0.58);
+
+  --el-color-primary: var(--color-primary);
+  --el-color-primary-light-3: #38bdf8;
+  --el-color-primary-light-5: #67e8f9;
+  --el-color-primary-light-7: #a5f3fc;
+  --el-color-primary-light-8: #cffafe;
+  --el-color-primary-light-9: #ecfeff;
+  --el-color-primary-dark-2: #0891b2;
+  --el-color-success: var(--color-success);
+  --el-color-danger: var(--color-danger);
+  --el-color-warning: var(--color-warning);
+  --el-bg-color: #f4f8fc;
+  --el-bg-color-page: #eaf3fa;
+  --el-bg-color-overlay: #ffffff;
+  --el-fill-color-blank: #ffffff;
+  --el-fill-color-light: rgba(15, 39, 66, 0.04);
+  --el-fill-color-lighter: rgba(15, 39, 66, 0.025);
+  --el-text-color-primary: var(--color-text);
+  --el-text-color-regular: var(--color-text-soft);
+  --el-text-color-secondary: var(--color-text-muted);
+  --el-text-color-placeholder: #94a3b8;
+  --el-border-color: var(--glass-border);
+  --el-border-color-light: rgba(15, 39, 66, 0.09);
+  --el-border-color-lighter: rgba(15, 39, 66, 0.06);
+  --el-border-radius-base: var(--radius-sm);
+  --el-box-shadow-light: var(--shadow-soft);
+  --el-font-family: var(--font-sans);
+  --el-mask-color: rgba(15, 39, 66, 0.38);
+}
+html.dark {
+  color-scheme: dark;
+
+  --color-bg: #0f172a;
+  --color-bg-deep: #020617;
+  --color-bg-elevated: #111c33;
+  --color-primary: #06b6d4;
+  --color-primary-strong: #22d3ee;
+  --color-secondary: #3b82f6;
+  --color-success: #22c55e;
+  --color-danger: #ef4444;
+  --color-warning: #f59e0b;
+
+  --color-text: #e2e8f0;
+  --color-text-soft: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-faint: #64748b;
+
+  --glass-bg: rgba(15, 23, 42, 0.72);
+  --glass-bg-strong: rgba(15, 23, 42, 0.9);
+  --glass-bg-soft: rgba(30, 41, 59, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(34, 211, 238, 0.34);
+
+  --shadow-card: 0 20px 50px rgba(2, 6, 23, 0.34);
+  --shadow-soft: 0 10px 30px rgba(2, 6, 23, 0.24);
+  --shadow-glow: 0 0 28px rgba(6, 182, 212, 0.2);
+
+  --page-background:
+    radial-gradient(circle at 16% 12%, rgba(6, 182, 212, 0.12), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.1), transparent 34%),
+    linear-gradient(145deg, #020617 0%, #0f172a 48%, #07111f 100%);
+  --grid-line: rgba(148, 163, 184, 0.025);
+  --topbar-bg: rgba(15, 23, 42, 0.5);
+  --surface-hover: rgba(255, 255, 255, 0.035);
+  --surface-subtle: rgba(255, 255, 255, 0.03);
+  --aurora-opacity: 0.22;
+  --scrollbar-track: rgba(2, 6, 23, 0.5);
+  --scrollbar-thumb: rgba(71, 85, 105, 0.72);
+  --scrollbar-thumb-hover: rgba(6, 182, 212, 0.52);
+
+  --el-color-primary: var(--color-primary);
+  --el-color-primary-light-3: #22d3ee;
+  --el-color-primary-light-5: #0891b2;
+  --el-color-primary-light-7: #0e7490;
+  --el-color-primary-light-8: #155e75;
+  --el-color-primary-light-9: rgba(6, 182, 212, 0.12);
+  --el-color-primary-dark-2: #67e8f9;
+  --el-color-success: var(--color-success);
+  --el-color-danger: var(--color-danger);
+  --el-color-warning: var(--color-warning);
+  --el-bg-color: #0f172a;
+  --el-bg-color-page: #020617;
+  --el-bg-color-overlay: #111c33;
+  --el-fill-color-blank: rgba(15, 23, 42, 0.9);
+  --el-fill-color-light: rgba(255, 255, 255, 0.04);
+  --el-fill-color-lighter: rgba(255, 255, 255, 0.025);
+  --el-text-color-primary: var(--color-text);
+  --el-text-color-regular: var(--color-text-soft);
+  --el-text-color-secondary: var(--color-text-muted);
+  --el-text-color-placeholder: #64748b;
+  --el-border-color: var(--glass-border);
+  --el-border-color-light: rgba(255, 255, 255, 0.08);
+  --el-border-color-lighter: rgba(255, 255, 255, 0.055);
+  --el-box-shadow-light: var(--shadow-soft);
+  --el-mask-color: rgba(2, 6, 23, 0.72);
+}

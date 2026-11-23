@@ -1,25 +1,39 @@
-
-# 数据（体积大，不入库，用原始数据 + 脚本复现）
+# ===== 数据（体积大，不入库，用原始数据 + 脚本复现）=====
 data/raw/
 data/interim/
 data/processed/
 
-# Python
+# ===== Python =====
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 .ipynb_checkpoints/
 
-# 系统文件
-.DS_Store
-Thumbs.db
+# ===== 虚拟环境 =====
+.venv/
+.backend-venv/
 
-# 模型/日志（算法组产出后再决定是否入库）
+# ===== 前端依赖 =====
+frontend/node_modules/
+node_modules/
+
+# ===== 模型 / 日志（大文件，不入库）=====
+models/onnx/
+*.onnx
 *.pt
 *.pth
-*.onnx
 runs/
+logs/*.log
 
+# ===== 运行时缓存 =====
+.rembg-cache/
+
+# ===== 后端运行时生成的文件 =====
+src/backend/uploads/
+
+# ===== 系统 / 编辑器 =====
+.DS_Store
+Thumbs.db
 .idea/
 .vscode/
